@@ -4,13 +4,6 @@ const user = [
         firstName: "Brodie",
         lastName: "Ward",
         rating: "4.5",
-        address: {
-            street: "1209 Rustico Rd",
-            city: "Miltonvale Park",
-            province: "PE",
-            postalCode: "C1E 3B9",
-            countryCode: "CA"
-        },
         clubsId: 1
     },
     {
@@ -145,141 +138,1343 @@ const clubs = [
     {
         id: 1,
         userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
         hand: "left",
         fullSet: true,
         price: "30.00",
-        image: "",
+        images: [
+            "",
+        ],
         driver: {
-            name: "Taylormade M4",
+            brand: "Taylormade",
+            name: "M4",
             price: "5.00",
             shaft: "Graphite",
-            flex: "S",
-            image: ""
+            flex: "S"
         },
-        fairwayWood: [
+        fairwayWoods: [
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
-                flex: "",
-                image: ""
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
-                flex: "",
-                image: ""
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
             }
         ],
-        hybrid: [],
+        hybrids: [],
         irons: [
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
-                flex: "",
-            },
-            {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
-                flex: "",
-            },
-            {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
-                flex: "",
-            },
-            {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             }
         ],
         wedge: [
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
                 flex: "",
             },
             {
-                name: "",
-                type: "",
-                price: "",
-                shaft: "",
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
                 flex: ""
             }
         ],
         putter: {
-            name: "",
-            type: "",
-            price: "",
-            shaft: "",
-            flex: "",
-            image: ""
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
         }
     },
     {
-        id: 2,
-        name: "Scott Allen"
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
     },
     {
-        id: 3,
-        name: "Dan Wahlin"
-    }
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
+    {
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
+    {
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
+    {
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
+    {
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
+    {
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
+    {
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
+    {
+        id: 1,
+        userId: 1,
+        address: {
+            street: "1209 Rustico Rd",
+            city: "Miltonvale Park",
+            province: "PE",
+            postalCode: "C1E 3B9",
+            countryCode: "CA"
+        },
+        hand: "left",
+        fullSet: true,
+        price: "30.00",
+        images: [
+            "",
+        ],
+        driver: {
+            brand: "Taylormade",
+            name: "M4",
+            price: "5.00",
+            shaft: "Graphite",
+            flex: "S"
+        },
+        fairwayWoods: [
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "3W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            },
+            {
+                brand: "Titleist",
+                name: "915F",
+                type: "5W",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "S"
+            }
+        ],
+        hybrids: [],
+        irons: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "4i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "5i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "6i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "7i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "8i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "9i",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            }
+        ],
+        wedge: [
+            {
+                brand: "Titleist",
+                name: "AP2",
+                type: "PW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "AW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "SW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: "",
+            },
+            {
+                brand: "Titleist",
+                name: "Vokey SM5",
+                type: "LW",
+                price: "5.00",
+                shaft: "Steel",
+                flex: ""
+            }
+        ],
+        putter: {
+            brand: "Scotty Cameron",
+            name: "Select Newport 2",
+            type: "Blade",
+            price: "5.00",
+            length: "34"
+        }
+    },
 ];
 
 const newCourse = {
