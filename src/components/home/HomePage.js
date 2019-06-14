@@ -25,7 +25,14 @@ const HomePage = () => (
           </Form.Group>
         </Form>
         <Button className="mar-l-hlf" variant="primary">Search</Button>
-        <ButtonToolbar>
+        <DropdownButton id="dropdown-distance" title="Distance (km)" variant="light">
+          <Dropdown.Item href="#">1</Dropdown.Item>
+          <Dropdown.Item href="#">5</Dropdown.Item>
+          <Dropdown.Item href="#">10</Dropdown.Item>
+          <Dropdown.Item href="#">25</Dropdown.Item>
+          <Dropdown.Item href="#">50</Dropdown.Item>
+        </DropdownButton>
+        {/* <ButtonToolbar>
           <OverlayTrigger
             trigger="click"
             key='bottom'
@@ -49,8 +56,8 @@ const HomePage = () => (
           >
             <Button variant="light">Location</Button>
           </OverlayTrigger>
-        </ButtonToolbar>
-        <DropdownButton id="dropdown-basic-button" title="Club Type" variant="light">
+        </ButtonToolbar> */}
+        <DropdownButton id="dropdown-club-type" title="Club Type" variant="light">
           <Dropdown.Item href="#">Full Sets</Dropdown.Item>
           <Dropdown.Item href="#">Drivers</Dropdown.Item>
           <Dropdown.Item href="#">Fairway Woods</Dropdown.Item>
