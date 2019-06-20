@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { loadClubs } from "../../redux/actions/clubsActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -14,6 +14,10 @@ import ClubCard from "../common/ClubCard";
 
 const HomePage = ({ clubs, loadClubs }) => {
 
+  const [searchFilter, setSearchFilter] = useState("");
+  const [distanceFilter, setDistanceFilter] = useState("");
+  const [clubTypeFilter, setclubTypeFilter] = useState("");
+
   useEffect(() => {
     if (clubs.length === 0) {
       loadClubs().catch(error => {
@@ -22,9 +26,36 @@ const HomePage = ({ clubs, loadClubs }) => {
     }
   }, []);
 
+  const handleFilterChange = (e) => {
+    // console.log(event.target);
+    switch (e.target.getAttribute("id")) {
+      case "search-filter":
+        setSearchFilter(e.target.value);
+        break;
+      case "distance-filter":
+        setDistanceFilter(e.target.value);
+        break;
+      case "club-type-filter":
+        setclubTypeFilter(e.target.value);
+        break;
+      default:
+        return false;
+    }
+  };
+
+  const handleFilterSubmit = () => {
+    console.log("SEARCH TERMS: \n" + searchFilter + "\n" + distanceFilter + "\n" + clubTypeFilter);
+  };
+
   return (
     < main >
-      <FilterBar />
+      <FilterBar
+        searchFilter={searchFilter}
+        distanceFilter={distanceFilter}
+        clubTypeFilter={clubTypeFilter}
+        handleFilterChange={handleFilterChange}
+        handleFilterSubmit={handleFilterSubmit}
+      />
       <Container>
         <Row>
           {clubs.map(club => {
@@ -36,7 +67,6 @@ const HomePage = ({ clubs, loadClubs }) => {
       </Container>
     </main >
   );
-
 };
 
 HomePage.propTypes = {
@@ -45,11 +75,7 @@ HomePage.propTypes = {
   loading: PropTypes.bool.isRequired
 };
 
-export function getClubsBySlug(clubs, slug) {
-  return clubs.find(clubs => clubs.slug === slug) || null;
-}
-
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     clubs:
       state.clubs.map(clubs => {
@@ -59,7 +85,7 @@ function mapStateToProps(state) {
       }),
     loading: state.apiCallsInProgress > 0
   };
-}
+};
 
 const mapDispatchToProps = {
   loadClubs

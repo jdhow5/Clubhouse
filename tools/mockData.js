@@ -96,7 +96,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Titleist",
                 name: "AP2",
@@ -234,7 +234,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Callaway",
                 name: "X2 Hot",
@@ -372,7 +372,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Taylormade",
                 name: "Rocketbladez Tour",
@@ -511,7 +511,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Titleist",
                 name: "AP1",
@@ -650,7 +650,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Callaway",
                 name: "XR",
@@ -789,7 +789,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Taylormade",
                 name: "Burner Plus",
@@ -927,7 +927,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Wilson Staff",
                 name: "D-100",
@@ -1065,7 +1065,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Titleist",
                 name: "AP2",
@@ -1203,7 +1203,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Mizuno",
                 name: "JPX 919 Hot Metal",
@@ -1341,7 +1341,7 @@ const clubs = [
                 flex: "",
             }
         ],
-        wedge: [
+        wedges: [
             {
                 brand: "Cobra",
                 name: "King F7",
@@ -1369,7 +1369,7 @@ const clubs = [
     },
 ];
 
-const newClubs = {
+const newClubSet = {
     id: null,
     firstName: "",
     lastName: "",
@@ -1462,7 +1462,7 @@ const newClubs = {
             flex: "",
         }
     ],
-    wedge: [
+    wedges: [
         {
             brand: "",
             name: "",
@@ -1491,6 +1491,6 @@ const newClubs = {
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
-    newClubs,
+    newClubSet,
     clubs
 };

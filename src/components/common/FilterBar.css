@@ -28,10 +28,15 @@
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-justify-content: flex-start;
-    -ms-flex-pack: start;
-    justify-content: flex-start;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
     -webkit-flex: 1 auto;
     -ms-flex: 1 auto;
     flex: 1 auto;
+}
+
+.cal-wpr {
+    display: flex;
+    align-items: center;
 }
