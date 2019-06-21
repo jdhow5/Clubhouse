@@ -4,7 +4,6 @@ import { loadClubs } from "../../redux/actions/clubsActions";
 import PropTypes from "prop-types";
 import { newClubSet } from "../../../tools/mockData";
 import Spinner from "../common/Spinner";
-import { toast } from "react-toastify";
 
 const ClubSetPage = ({
     clubs,

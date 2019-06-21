@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "react-bootstrap/Button";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Calendar from "../common/Calendar";
 import "./FilterBar.css";

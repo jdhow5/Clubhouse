@@ -6,14 +6,16 @@ import FilterBar from "../common/FilterBar";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Spinner from "../common/Spinner";
 
 
 //import { Link } from "react-router-dom";
 import "./HomePage.css";
 import ClubCard from "../common/ClubCard";
 
-const HomePage = ({ clubs, loadClubs }) => {
+const HomePage = ({ clubs, loadClubs, loading }) => {
 
+  const [filteredClubs, setFilteredClubs] = useState([...clubs]);
   const [searchFilter, setSearchFilter] = useState("");
   const [distanceFilter, setDistanceFilter] = useState("");
   const [clubTypeFilter, setclubTypeFilter] = useState("");
@@ -24,7 +26,8 @@ const HomePage = ({ clubs, loadClubs }) => {
         alert("Loading clubs failed" + error);
       });
     }
-  }, []);
+    else { setFilteredClubs([...clubs]); }
+  }, [clubs.length]);
 
   const handleFilterChange = (e) => {
     // console.log(event.target);
@@ -44,10 +47,34 @@ const HomePage = ({ clubs, loadClubs }) => {
   };
 
   const handleFilterSubmit = () => {
+    if(clubTypeFilter !== ""){
+      setFilteredClubs([...clubs].filter(clubType => 
+        clubType[clubTypeFilter].length ||
+        !isEmpty(clubType[clubTypeFilter])
+      ));
+    }
+    else { setFilteredClubs([...clubs]); }
     console.log("SEARCH TERMS: \n" + searchFilter + "\n" + distanceFilter + "\n" + clubTypeFilter);
   };
 
+  // const fullSetAvailable = (obj) => {
+  //   for(let key in obj) {
+  //     if(obj.hasOwnProperty(key))
+  //       return false;
+  //   }
+  //   return true;
+  // };
+
+  const isEmpty = (obj) => {
+    for(let key in obj) {
+      if(obj.hasOwnProperty(key))
+        return false;
+    }
+    return true;
+  };
+
   return (
+    loading ? <Spinner /> : 
     < main >
       <FilterBar
         searchFilter={searchFilter}
@@ -58,7 +85,7 @@ const HomePage = ({ clubs, loadClubs }) => {
       />
       <Container>
         <Row>
-          {clubs.map(club => {
+          {filteredClubs.map(club => {
             return (
               <Col xs={12} s={4} md={3} key={club.id}><ClubCard club={club} /></Col>
             );
