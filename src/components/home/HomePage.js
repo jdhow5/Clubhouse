@@ -18,7 +18,7 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
   const [filteredClubs, setFilteredClubs] = useState([...clubs]);
   const [searchFilter, setSearchFilter] = useState("");
   const [distanceFilter, setDistanceFilter] = useState("");
-  const [clubTypeFilter, setclubTypeFilter] = useState("");
+  const [clubTypeFilter, setClubTypeFilter] = useState("");
 
   useEffect(() => {
     if (clubs.length === 0) {
@@ -39,7 +39,7 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
         setDistanceFilter(e.target.value);
         break;
       case "club-type-filter":
-        setclubTypeFilter(e.target.value);
+        setClubTypeFilter(e.target.value);
         break;
       default:
         return false;
@@ -47,14 +47,33 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
   };
 
   const handleFilterSubmit = () => {
-    if(clubTypeFilter !== ""){
-      setFilteredClubs([...clubs].filter(clubType => 
+    if (clubTypeFilter !== "") {
+      setFilteredClubs([...clubs].filter(clubType =>
         clubType[clubTypeFilter].length ||
         !isEmpty(clubType[clubTypeFilter])
       ));
     }
     else { setFilteredClubs([...clubs]); }
     console.log("SEARCH TERMS: \n" + searchFilter + "\n" + distanceFilter + "\n" + clubTypeFilter);
+  };
+
+  const degreesToRadians = (degrees) => {
+    return degrees * Math.PI / 180;
+  };
+
+  const calcDistance = (lat1, lon1, lat2, lon2) => {
+    const earthRadiusKm = 6371;
+
+    let dLat = degreesToRadians(lat2 - lat1);
+    let dLon = degreesToRadians(lon2 - lon1);
+
+    lat1 = degreesToRadians(lat1);
+    lat2 = degreesToRadians(lat2);
+
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return earthRadiusKm * c;
   };
 
   // const fullSetAvailable = (obj) => {
@@ -66,33 +85,33 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
   // };
 
   const isEmpty = (obj) => {
-    for(let key in obj) {
-      if(obj.hasOwnProperty(key))
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key))
         return false;
     }
     return true;
   };
 
   return (
-    loading ? <Spinner /> : 
-    < main >
-      <FilterBar
-        searchFilter={searchFilter}
-        distanceFilter={distanceFilter}
-        clubTypeFilter={clubTypeFilter}
-        handleFilterChange={handleFilterChange}
-        handleFilterSubmit={handleFilterSubmit}
-      />
-      <Container>
-        <Row>
-          {filteredClubs.map(club => {
-            return (
-              <Col xs={12} s={4} md={3} key={club.id}><ClubCard club={club} /></Col>
-            );
-          })}
-        </Row>
-      </Container>
-    </main >
+    loading ? <Spinner /> :
+      < main >
+        <FilterBar
+          searchFilter={searchFilter}
+          distanceFilter={distanceFilter}
+          clubTypeFilter={clubTypeFilter}
+          handleFilterChange={handleFilterChange}
+          handleFilterSubmit={handleFilterSubmit}
+        />
+        <Container>
+          <Row>
+            {filteredClubs.map(club => {
+              return (
+                <Col xs={12} s={4} md={3} key={club.id}><ClubCard club={club} /></Col>
+              );
+            })}
+          </Row>
+        </Container>
+      </main >
   );
 };
 
