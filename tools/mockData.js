@@ -19,15 +19,17 @@ const clubs = [
             "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQOUFJ15wQyxVNRCXcDs-259f5RfdW21QUi22a0vfINeBTAMAuHDpAIu8dn2qDXog3lO988Weo1T6aZG-ch24ru8bKHfvCB_n91oXcNYMs&usqp=CAc",
             "https://cdn0.globalgolf.com/images/product/large/1033000/1033029-aaa.jpg"
         ],
-        driver: {
-            brand: "Taylormade",
-            name: "M4",
-            price: "5.00",
-            loft: "8",
-            shaft: "Graphite",
-            flex: "S",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Taylormade",
+                name: "M4",
+                price: "5.00",
+                loft: "8",
+                shaft: "Graphite",
+                flex: "S",
+                availability: []
+            }
+        ],
         fairwayWoods: [
             {
                 brand: "Titleist",
@@ -36,7 +38,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -45,7 +47,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [],
@@ -57,7 +59,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -66,7 +68,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -75,7 +77,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -84,7 +86,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -93,7 +95,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -102,7 +104,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -113,7 +115,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -122,7 +124,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -131,7 +133,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -140,17 +142,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Scotty Cameron",
-            name: "Select Newport 2",
-            type: "Blade",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Scotty Cameron",
+                name: "Select Newport 2",
+                type: "Blade",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 2,
@@ -171,15 +175,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcReWirC0TGohFFibW5y5DjTFI0a9rcdMbSw9qg3dFUNifHpkf_b2VHC53YB3_ck6ZrotKhdQYcbOLl3ZBU4XQFND7GCTGitvLN7uMVoek8&usqp=CAc",
         ],
-        driver: {
-            brand: "Callaway",
-            name: "X2 Hot",
-            loft: "10",
-            price: "5.00",
-            shaft: "Graphite",
-            flex: "R",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Callaway",
+                name: "X2 Hot",
+                loft: "10",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "R",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Callaway",
@@ -188,7 +194,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -197,7 +203,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [],
@@ -209,7 +215,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -218,7 +224,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -227,7 +233,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -236,7 +242,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -245,7 +251,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -254,7 +260,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -265,7 +271,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -274,7 +280,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -283,7 +289,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -292,17 +298,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Taylormade",
-            name: "Spider",
-            type: "Mallet",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Taylormade",
+                name: "Spider",
+                type: "Mallet",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 3,
@@ -323,15 +331,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2ze7XF7Rlz038oX242kaZ9_1Jhz99zHpKZOk266WjHPe8mw7bTA",
         ],
-        driver: {
-            brand: "Callaway",
-            name: "Big Bertha",
-            loft: "9.5",
-            price: "5.00",
-            shaft: "Graphite",
-            flex: "X",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Callaway",
+                name: "Big Bertha",
+                loft: "9.5",
+                price: "5.00",
+                shaft: "Graphite",
+                flex: "X",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Callaway",
@@ -340,7 +350,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "X",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -349,7 +359,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "X",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [],
@@ -361,7 +371,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -370,7 +380,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -379,7 +389,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -388,7 +398,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -397,7 +407,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -406,7 +416,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -417,7 +427,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -426,7 +436,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -435,7 +445,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -444,17 +454,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Taylormade",
-            name: "Ghost",
-            type: "Blade",
-            price: "5.00",
-            length: "35",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Taylormade",
+                name: "Ghost",
+                type: "Blade",
+                price: "5.00",
+                length: "35",
+                availability: []
+            }
+        ]
     },
     {
         id: 4,
@@ -475,15 +487,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOOM_76pejrG-YEbtrXohuTjHq6g63GEfrYN6F-164p-tvpZJ_",
         ],
-        driver: {
-            brand: "Cobra",
-            name: "King F9",
-            price: "5.00",
-            loft: "9",
-            shaft: "Graphite",
-            flex: "S",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Cobra",
+                name: "King F9",
+                price: "5.00",
+                loft: "9",
+                shaft: "Graphite",
+                flex: "S",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "",
@@ -492,7 +506,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [
@@ -503,7 +517,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             }
         ],
         irons: [
@@ -514,7 +528,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -523,7 +537,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -532,7 +546,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -541,7 +555,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -550,7 +564,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -559,7 +573,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -570,7 +584,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -579,7 +593,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -588,7 +602,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -597,17 +611,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Scotty Cameron",
-            name: "Select Newport 2",
-            type: "Blade",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Scotty Cameron",
+                name: "Select Newport 2",
+                type: "Blade",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 5,
@@ -628,15 +644,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXpFksdzuSi8CzOVae5v0UpZxOVlxjPEVQkbRarEYlDOKTJvDO",
         ],
-        driver: {
-            brand: "Callaway",
-            name: "XR 16",
-            price: "5.00",
-            loft: "10.5",
-            shaft: "Graphite",
-            flex: "R",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Callaway",
+                name: "XR 16",
+                price: "5.00",
+                loft: "10.5",
+                shaft: "Graphite",
+                flex: "R",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Callaway",
@@ -645,7 +663,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [
@@ -656,7 +674,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             }
         ],
         irons: [
@@ -667,7 +685,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -676,7 +694,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -685,7 +703,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -694,7 +712,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -703,7 +721,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -712,7 +730,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -723,7 +741,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -732,7 +750,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -741,7 +759,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Callaway",
@@ -750,17 +768,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Odyssey",
-            name: "White Hot 2-Ball",
-            type: "Mallet",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Odyssey",
+                name: "White Hot 2-Ball",
+                type: "Mallet",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 6,
@@ -781,15 +801,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJOs2GNlIL2qUgFL0fPbO96dfFfb6gGLaBx7H9dH99hmueFXit",
         ],
-        driver: {
-            brand: "Taylormade",
-            name: "R7",
-            price: "5.00",
-            loft: "11",
-            shaft: "Graphite",
-            flex: "R",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Taylormade",
+                name: "R7",
+                price: "5.00",
+                loft: "11",
+                shaft: "Graphite",
+                flex: "R",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Taylormade",
@@ -798,7 +820,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [
@@ -809,7 +831,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -818,7 +840,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             }
         ],
         irons: [
@@ -829,7 +851,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -838,7 +860,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -847,7 +869,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -856,7 +878,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -865,7 +887,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -876,7 +898,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -885,7 +907,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -894,7 +916,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Taylormade",
@@ -903,17 +925,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Taylormade",
-            name: "Spider Tour",
-            type: "Blade",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Taylormade",
+                name: "Spider Tour",
+                type: "Blade",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 7,
@@ -934,15 +958,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDbe8LD00NvTAHY8NKqsiL-q87n9UZoErCgRyPLiSnCYWPX3MjNxnbCt88",
         ],
-        driver: {
-            brand: "Wilson Staff",
-            name: "D-300",
-            price: "5.00",
-            loft: "9.5",
-            shaft: "Graphite",
-            flex: "R",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Wilson Staff",
+                name: "D-300",
+                price: "5.00",
+                loft: "9.5",
+                shaft: "Graphite",
+                flex: "R",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Wilson Staff",
@@ -951,7 +977,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "R",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [],
@@ -963,7 +989,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Wilson Staff",
@@ -972,7 +998,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Wilson Staff",
@@ -981,7 +1007,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Wilson Staff",
@@ -990,7 +1016,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Wilson Staff",
@@ -999,7 +1025,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Wilson Staff",
@@ -1008,7 +1034,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Wilson Staff",
@@ -1017,7 +1043,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -1028,7 +1054,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Wilson Staff",
@@ -1037,7 +1063,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cleveland",
@@ -1046,7 +1072,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cleveland",
@@ -1055,17 +1081,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Wilson Staff",
-            name: "Infinite South Side",
-            type: "Mallet",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Wilson Staff",
+                name: "Infinite South Side",
+                type: "Mallet",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 8,
@@ -1086,15 +1114,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9VFhSKo1uH3pztzwuSNKKuuxiT3tZrTn8q27JmMx7uoc3xnJD",
         ],
-        driver: {
-            brand: "Titleist",
-            name: "T2",
-            price: "5.00",
-            loft: "9",
-            shaft: "Graphite",
-            flex: "S",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Titleist",
+                name: "T2",
+                price: "5.00",
+                loft: "9",
+                shaft: "Graphite",
+                flex: "S",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Titleist",
@@ -1103,7 +1133,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1112,7 +1142,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [],
@@ -1124,7 +1154,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1133,7 +1163,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1142,7 +1172,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1151,7 +1181,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1160,7 +1190,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1169,7 +1199,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -1180,7 +1210,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1189,7 +1219,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1198,7 +1228,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1207,17 +1237,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Scotty Cameron",
-            name: "Select Newport 2",
-            type: "Blade",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Scotty Cameron",
+                name: "Select Newport 2",
+                type: "Blade",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 9,
@@ -1238,15 +1270,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6Lu2cNqJXzMcxaMqYXtWr3agLjjh2-uEFxJTbzpzyvd4p8M5R",
         ],
-        driver: {
-            brand: "Mizuno",
-            name: "ST-190",
-            price: "5.00",
-            loft: "9.5",
-            shaft: "Graphite",
-            flex: "S",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Mizuno",
+                name: "ST-190",
+                price: "5.00",
+                loft: "9.5",
+                shaft: "Graphite",
+                flex: "S",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Mizuno",
@@ -1255,7 +1289,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Mizuno",
@@ -1264,7 +1298,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [],
@@ -1276,7 +1310,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Mizuno",
@@ -1285,7 +1319,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Mizuno",
@@ -1294,7 +1328,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Mizuno",
@@ -1303,7 +1337,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Mizuno",
@@ -1312,7 +1346,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Mizuno",
@@ -1321,7 +1355,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -1332,7 +1366,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Mizuno",
@@ -1341,7 +1375,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1350,7 +1384,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Titleist",
@@ -1359,17 +1393,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Scotty Cameron",
-            name: "Futura X5",
-            type: "Blade",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Scotty Cameron",
+                name: "Futura X5",
+                type: "Blade",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
     {
         id: 10,
@@ -1390,15 +1426,17 @@ const clubs = [
         images: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRcG3WUmtm27f_vTkTZrQvQcJ0mCTs3fN5r7_1y7qI3bMZXyGdqQ",
         ],
-        driver: {
-            brand: "Cobra",
-            name: "King F8",
-            price: "5.00",
-            loft: "9.5",
-            shaft: "Graphite",
-            flex: "S",
-            availbility: {}
-        },
+        driver: [
+            {
+                brand: "Cobra",
+                name: "King F8",
+                price: "5.00",
+                loft: "9.5",
+                shaft: "Graphite",
+                flex: "S",
+                availability: []
+            },
+        ],
         fairwayWoods: [
             {
                 brand: "Cobra",
@@ -1407,7 +1445,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cobra",
@@ -1416,7 +1454,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Graphite",
                 flex: "S",
-                availbility: {}
+                availability: []
             }
         ],
         hybrids: [],
@@ -1428,7 +1466,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cobra",
@@ -1437,7 +1475,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cobra",
@@ -1446,7 +1484,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cobra",
@@ -1455,7 +1493,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cobra",
@@ -1464,7 +1502,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cobra",
@@ -1473,7 +1511,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
         wedges: [
@@ -1484,7 +1522,7 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             },
             {
                 brand: "Cobra",
@@ -1493,17 +1531,19 @@ const clubs = [
                 price: "5.00",
                 shaft: "Steel",
                 flex: "",
-                availbility: {}
+                availability: []
             }
         ],
-        putter: {
-            brand: "Odyssey",
-            name: "White Hot Pro 2.0",
-            type: "Blade",
-            price: "5.00",
-            length: "34",
-            availbility: {}
-        }
+        putter: [
+            {
+                brand: "Odyssey",
+                name: "White Hot Pro 2.0",
+                type: "Blade",
+                price: "5.00",
+                length: "34",
+                availability: []
+            }
+        ]
     },
 ];
 
@@ -1523,15 +1563,17 @@ const newClubSet = {
     fullSet: true,
     price: "",
     images: [],
-    driver: {
-        brand: "",
-        name: "",
-        price: "",
-        loft: "",
-        shaft: "",
-        flex: "",
-        availbility: {}
-    },
+    driver: [
+        {
+            brand: "",
+            name: "",
+            price: "",
+            loft: "",
+            shaft: "",
+            flex: "",
+            availability: []
+        },
+    ],
     fairwayWoods: [
         {
             brand: "",
@@ -1540,7 +1582,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         },
         {
             brand: "",
@@ -1549,7 +1591,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         }
     ],
     hybrids: [],
@@ -1561,7 +1603,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         },
         {
             brand: "",
@@ -1570,7 +1612,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         },
         {
             brand: "",
@@ -1579,7 +1621,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         },
         {
             brand: "",
@@ -1588,7 +1630,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         },
         {
             brand: "",
@@ -1597,7 +1639,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         },
         {
             brand: "",
@@ -1606,7 +1648,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         }
     ],
     wedges: [
@@ -1617,7 +1659,7 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         },
         {
             brand: "",
@@ -1626,17 +1668,19 @@ const newClubSet = {
             price: "",
             shaft: "",
             flex: "",
-            availbility: {}
+            availability: []
         }
     ],
-    putter: {
-        brand: "",
-        name: "",
-        type: "",
-        price: "",
-        length: "",
-        availbility: {}
-    }
+    putter: [
+        {
+            brand: "",
+            name: "",
+            type: "",
+            price: "",
+            length: "",
+            availability: []
+        }
+    ]
 };
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)

@@ -9,6 +9,7 @@ const FilterBar = ({
     searchFilter,
     distanceFilter,
     clubTypeFilter,
+    dateFilter,
     handleFilterChange,
     handleFilterSubmit
 }) => {
@@ -59,7 +60,10 @@ const FilterBar = ({
                     </Form.Group>
                 </Form>
                 <div className="cal-wpr">
-                    <Calendar />
+                    <Calendar
+                        dateFilter={dateFilter}
+                        handleFilterChange={handleFilterChange}
+                    />
                 </div>
                 <Button className="search-btn" variant="primary" onClick={handleFilterSubmit}>Search</Button>
             </div>
@@ -71,6 +75,7 @@ FilterBar.propTypes = {
     searchFilter: PropTypes.string.isRequired,
     distanceFilter: PropTypes.string.isRequired,
     clubTypeFilter: PropTypes.string.isRequired,
+    dateFilter: PropTypes.string.isRequired,
     handleFilterChange: PropTypes.func.isRequired,
     handleFilterSubmit: PropTypes.func.isRequired
 };

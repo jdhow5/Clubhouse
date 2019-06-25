@@ -19,6 +19,7 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
   const [searchFilter, setSearchFilter] = useState("");
   const [distanceFilter, setDistanceFilter] = useState("");
   const [clubTypeFilter, setClubTypeFilter] = useState("");
+  const [dateFilter, setDateFilter] = useState(new Date());
 
   useEffect(() => {
     if (clubs.length === 0) {
@@ -41,6 +42,9 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
       case "club-type-filter":
         setClubTypeFilter(e.target.value);
         break;
+      case "date-filter":
+        setDateFilter(e.target.value);
+        break;
       default:
         return false;
     }
@@ -48,10 +52,14 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
 
   const handleFilterSubmit = () => {
     if (clubTypeFilter !== "") {
-      setFilteredClubs([...clubs].filter(clubType =>
-        clubType[clubTypeFilter].length ||
-        !isEmpty(clubType[clubTypeFilter])
+      setFilteredClubs([...clubs].filter(club =>
+        club[clubTypeFilter].length
       ));
+      if (dateFilter !== "") {
+        setFilteredClubs([...filteredClubs].filter(clubs =>
+          clubs[clubTypeFilter].some(club => club.isAvailable)
+        ));
+      }
     }
     else { setFilteredClubs([...clubs]); }
     console.log("SEARCH TERMS: \n" + searchFilter + "\n" + distanceFilter + "\n" + clubTypeFilter);
@@ -76,13 +84,17 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
     return earthRadiusKm * c;
   };
 
-  // const fullSetAvailable = (obj) => {
-  //   for(let key in obj) {
-  //     if(obj.hasOwnProperty(key))
-  //       return false;
-  //   }
-  //   return true;
-  // };
+  const isAvailable = (obj, date) => {
+    return !obj.availability.includes(date);
+  };
+
+  const fullSetAvailable = (obj) => {
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key))
+        return false;
+    }
+    return true;
+  };
 
   const isEmpty = (obj) => {
     for (let key in obj) {
@@ -99,6 +111,7 @@ const HomePage = ({ clubs, loadClubs, loading }) => {
           searchFilter={searchFilter}
           distanceFilter={distanceFilter}
           clubTypeFilter={clubTypeFilter}
+          dateFilter={dateFilter}
           handleFilterChange={handleFilterChange}
           handleFilterSubmit={handleFilterSubmit}
         />
