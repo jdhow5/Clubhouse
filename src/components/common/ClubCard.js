@@ -24,7 +24,7 @@ const ClubCard = ({ club }) => (
         <Card.Body>
             <Card.Title>{club.firstName + " " + club.lastName}</Card.Title>
             <Card.Text>
-                {club.driver.brand + " " + club.driver.name}
+                {club.driver[0].brand + " " + club.driver[0].name}
             </Card.Text>
             <Link to={"/" + club.slug}>Learn More</Link>
         </Card.Body>

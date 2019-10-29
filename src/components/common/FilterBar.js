@@ -75,7 +75,7 @@ FilterBar.propTypes = {
     searchFilter: PropTypes.string.isRequired,
     distanceFilter: PropTypes.string.isRequired,
     clubTypeFilter: PropTypes.string.isRequired,
-    dateFilter: PropTypes.string.isRequired,
+    dateFilter: PropTypes.instanceOf(Date).isRequired,
     handleFilterChange: PropTypes.func.isRequired,
     handleFilterSubmit: PropTypes.func.isRequired
 };

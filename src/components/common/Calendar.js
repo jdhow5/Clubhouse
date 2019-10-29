@@ -10,14 +10,14 @@ import "react-datepicker/dist/react-datepicker.css";
 const Calendar = (dateFilter, handleFilterChange) => {
     return (
         <DatePicker
-            selected={dateFilter}
+            selected={new Date()}
             onChange={handleFilterChange}
         />
     );
 };
 
 Calendar.propTypes = {
-    dateFilter: PropTypes.string.isRequired,
+    dateFilter: PropTypes.instanceOf(Date).isRequired,
     handleFilterChange: PropTypes.func.isRequired
 };
 
