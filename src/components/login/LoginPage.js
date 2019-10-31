@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
+import { authenticateUser } from "../../redux/actions/authenticateUserActions";
+import PropTypes from "prop-types";
 import "./LoginPage.css";
 
-const LoginPage = () => {
+const LoginPage = ({ authenticateUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,6 +15,9 @@ const LoginPage = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
+    authenticateUser({ username: email, password: password }).catch(error => {
+      alert("User authentication failed: " + error);
+    });
   }
 
   return (
@@ -42,8 +48,12 @@ const LoginPage = () => {
   );
 }
 
+LoginPage.propTypes = {
+  authenticateUser: PropTypes.func.isRequired
+};
+
 const mapDispatchToProps = {
-  
+  authenticateUser
 };
 
 export default connect(

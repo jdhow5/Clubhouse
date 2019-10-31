@@ -3,7 +3,7 @@ import courses from "./courseReducer";
 import authors from "./authorReducer";
 import clubs from "./clubsReducer";
 import apiCallsInProgress from "./apiStatusReducer";
-import isAuthenticated from "./authenticatedReducer";
+import isAuthenticated from "./authenticateUserReducer";
 
 const rootReducer = combineReducers({
   courses,
