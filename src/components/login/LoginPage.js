@@ -4,8 +4,9 @@ import { Button, Form } from "react-bootstrap";
 import { authenticateUser } from "../../redux/actions/authenticateUserActions";
 import PropTypes from "prop-types";
 import "./LoginPage.css";
+import { toast } from "react-toastify";
 
-const LoginPage = ({ authenticateUser }) => {
+const LoginPage = ({ authenticateUser, history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,9 +16,14 @@ const LoginPage = ({ authenticateUser }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    authenticateUser({ username: email, password: password }).catch(error => {
-      alert("User authentication failed: " + error);
-    });
+    authenticateUser({ username: email, password: password })
+      .then(() => {
+        toast.success("Log in successful");
+        history.push("/");
+      })
+      .catch(error => {
+        alert("User authentication failed: " + error);
+      });
   }
 
   return (
@@ -49,7 +55,8 @@ const LoginPage = ({ authenticateUser }) => {
 }
 
 LoginPage.propTypes = {
-  authenticateUser: PropTypes.func.isRequired
+  authenticateUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = {

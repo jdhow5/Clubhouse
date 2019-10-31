@@ -65,7 +65,7 @@ export function ManageCoursePage({
     saveCourse(course)
       .then(() => {
         toast.success("Course saved.");
-        history.push("/courses");
+        history.push("/");
       })
       .catch(error => {
         setSaving(false);
@@ -76,15 +76,15 @@ export function ManageCoursePage({
   return authors.length === 0 || courses.length === 0 ? (
     <Spinner />
   ) : (
-    <CourseForm
-      course={course}
-      errors={errors}
-      authors={authors}
-      onChange={handleChange}
-      onSave={handleSave}
-      saving={saving}
-    />
-  );
+      <CourseForm
+        course={course}
+        errors={errors}
+        authors={authors}
+        onChange={handleChange}
+        onSave={handleSave}
+        saving={saving}
+      />
+    );
 }
 
 ManageCoursePage.propTypes = {
