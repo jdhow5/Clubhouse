@@ -2,5 +2,6 @@ export default {
   courses: [],
   authors: [],
   clubs: [],
-  apiCallsInProgress: 0
+  apiCallsInProgress: 0,
+  isAuthenticated: false
 };

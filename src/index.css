@@ -2,9 +2,8 @@
   box-sizing: border-box;
 }
 
-#app {
+#app>.container-fluid {
   max-width: 1200px;
-  margin: 0 auto;
 }
 
 .fl-r {
