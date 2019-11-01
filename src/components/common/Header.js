@@ -9,7 +9,7 @@ const Header = ({ isAuthenticated }) => {
   return (
     <div className="main-header">
       <div className="logo-wpr">
-        <div className="logo-img"><img src="https://www.rbc.com/dvl/assets/images/logos/rbc-logo-shield.svg" alt="" /></div>
+        <div className="logo-img"></div>
       </div>
       <div className="header-content">
         <nav className="">
