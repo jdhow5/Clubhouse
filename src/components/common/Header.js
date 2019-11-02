@@ -29,7 +29,7 @@ const Header = ({ isAuthenticated }) => {
           {
 
             isAuthenticated ?
-              <NavLink to="/login" className="" activeStyle={activeStyle}>
+              <NavLink to="/profile" className="" activeStyle={activeStyle}>
                 Profile
               </NavLink>
               :

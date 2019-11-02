@@ -6,6 +6,7 @@ import Header from "./common/Header";
 import PageNotFound from "./PageNotFound";
 import ClubsDetailPage from "./clubs/ClubsDetailPage";
 import LoginPage from "./login/LoginPage";
+import ProfilePage from "./profile/ProfilePage";
 import { ToastContainer } from "react-toastify";
 import { Container } from "react-bootstrap";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +19,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/profile" component={ProfilePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/:slug" component={ClubsDetailPage} />
         <Route component={PageNotFound} />
