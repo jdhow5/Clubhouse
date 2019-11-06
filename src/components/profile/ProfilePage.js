@@ -7,89 +7,94 @@ import "./ProfilePage.css";
 import { toast } from "react-toastify";
 
 const ProfilePage = ({ authenticateUser, history }) => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("test@test.com");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("Test");
+  const [lastName, setLastName] = useState("Name");
+  const [birthDay, setBirthDay] = useState("5");
+  const [birthMonth, setBirthMonth] = useState("05");
+  const [birthYear, setBirthYear] = useState("1993");
+  const [address, setAddress] = useState("132 Streeter Ave");
+  const [unitNum, setUnitNum] = useState("");
+  const [postalCode, setPostalCode] = useState("C0B 1M0");
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+  const validateForm = () => {
+    return true;
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    authenticateUser({ username: email, password: password })
-      .then(() => {
-        toast.success("Log in successful");
-        history.push("/");
-      })
-      .catch(error => {
-        alert("User authentication failed: " + error);
-      });
   }
 
   return (
     <div className="profile">
       <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="firstName">
+        <Form.Group controlId="firstName" >
           <Form.Label>First Name</Form.Label>
           <Form.Control
             autoFocus
             type="text"
             value={firstName}
             onChange={e => setFirstName(e.target.value)}
+            readOnly
+            plaintext
           />
         </Form.Group>
-        <Form.Group controlId="lastName">
+        <Form.Group controlId="lastName" >
           <Form.Label>Last Name</Form.Label>
           <Form.Control
             type="text"
             value={lastName}
             onChange={e => setLastName(e.target.value)}
+            readOnly
+            plaintext
           />
         </Form.Group>
-        <Form.Group controlId="email">
+        <Form.Group controlId="email" >
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            readOnly
+            plaintext
           />
         </Form.Group>
-        <Form.Row>
-          <Col>
-            <Form.Group controlId="birthDay">
-              <Form.Label>Day</Form.Label>
-              <Form.Control
-                as="select"
-                value={birthDay}
-                onChange={e => setBirthDate(e.target.id, e.target.value)}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId="birthMonth">
-              <Form.Label>Month</Form.Label>
-              <Form.Control
-                as="select"
-                value={birthMonth}
-                onChange={e => setBirthDate(e.target.id, e.target.value)}
-              />
-            </Form.Group>
-          </Col>
-          <Col>
-            <Form.Group controlId="birthYear">
-              <Form.Label>Year</Form.Label>
-              <Form.Control
-                as="select"
-                value={birthYear}
-                onChange={e => setBirthDate(e.target.id, e.target.value)}
-              />
-            </Form.Group>
-          </Col>
-        </Form.Row>
+
+        <Form.Group controlId="address" >
+          <Form.Label>Address</Form.Label>
+          <Form.Control
+            type="text"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+            readOnly
+            plaintext
+          />
+        </Form.Group>
+        <Form.Group controlId="unitNum">
+          <Form.Label>Unit Number</Form.Label>
+          <Form.Control
+            type="text"
+            value={unitNum}
+            onChange={e => setUnitNum(e.target.value)}
+            readOnly
+            plaintext
+          />
+        </Form.Group>
+        <Form.Group controlId="postalCode">
+          <Form.Label>Postal Code</Form.Label>
+          <Form.Control
+            type="text"
+            value={postalCode}
+            onChange={e => setPostalCode(e.target.value)}
+            readOnly
+            plaintext
+          />
+        </Form.Group>
 
 
         <Button disabled={!validateForm()} type="submit">
-          Login
+          Save
         </Button>
       </Form>
     </div>
