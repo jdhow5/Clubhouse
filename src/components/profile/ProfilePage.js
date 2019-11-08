@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form, Col } from "react-bootstrap";
 import { authenticateUser } from "../../redux/actions/authenticateUserActions";
+import Calendar from "../common/Calendar";
 import PropTypes from "prop-types";
 import "./ProfilePage.css";
 import { toast } from "react-toastify";
@@ -17,13 +18,18 @@ const ProfilePage = ({ authenticateUser, history }) => {
   const [address, setAddress] = useState("132 Streeter Ave");
   const [unitNum, setUnitNum] = useState("");
   const [postalCode, setPostalCode] = useState("C0B 1M0");
+  const [editProfile, setEditProfile] = useState(false);
 
-  const validateForm = () => {
-    return true;
+  const formIsValid = () => {
+    return false;
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
+  }
+
+  const updateBirthday = () => {
+
   }
 
   return (
@@ -36,8 +42,8 @@ const ProfilePage = ({ authenticateUser, history }) => {
             type="text"
             value={firstName}
             onChange={e => setFirstName(e.target.value)}
-            readOnly
-            plaintext
+            readOnly={!editProfile}
+            plaintext={!editProfile}
           />
         </Form.Group>
         <Form.Group controlId="lastName" >
@@ -46,8 +52,8 @@ const ProfilePage = ({ authenticateUser, history }) => {
             type="text"
             value={lastName}
             onChange={e => setLastName(e.target.value)}
-            readOnly
-            plaintext
+            readOnly={!editProfile}
+            plaintext={!editProfile}
           />
         </Form.Group>
         <Form.Group controlId="email" >
@@ -56,8 +62,8 @@ const ProfilePage = ({ authenticateUser, history }) => {
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            readOnly
-            plaintext
+            readOnly={!editProfile}
+            plaintext={!editProfile}
           />
         </Form.Group>
 
@@ -67,8 +73,8 @@ const ProfilePage = ({ authenticateUser, history }) => {
             type="text"
             value={address}
             onChange={e => setAddress(e.target.value)}
-            readOnly
-            plaintext
+            readOnly={!editProfile}
+            plaintext={!editProfile}
           />
         </Form.Group>
         <Form.Group controlId="unitNum">
@@ -77,8 +83,15 @@ const ProfilePage = ({ authenticateUser, history }) => {
             type="text"
             value={unitNum}
             onChange={e => setUnitNum(e.target.value)}
-            readOnly
-            plaintext
+            readOnly={!editProfile}
+            plaintext={!editProfile}
+          />
+        </Form.Group>
+        <Form.Group controlId="birthdate">
+          <Form.Label>Birthday</Form.Label>
+          <Calendar
+            dateFilter={new Date()}
+            handleFilterChange={updateBirthday}
           />
         </Form.Group>
         <Form.Group controlId="postalCode">
@@ -87,14 +100,17 @@ const ProfilePage = ({ authenticateUser, history }) => {
             type="text"
             value={postalCode}
             onChange={e => setPostalCode(e.target.value)}
-            readOnly
-            plaintext
+            readOnly={!editProfile}
+            plaintext={!editProfile}
           />
         </Form.Group>
 
 
-        <Button disabled={!validateForm()} type="submit">
+        <Button disabled={formIsValid()} type="submit" onClick={() => setEditProfile(false)}>
           Save
+        </Button>
+        <Button onClick={() => setEditProfile(true)} hidden={editProfile}>
+          Edit
         </Button>
       </Form>
     </div>
