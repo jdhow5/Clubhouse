@@ -20,3 +20,18 @@ export function authenticateUser(userData) {
       });
   };
 }
+
+export function logoutUser() {
+  return function (dispatch) {
+    dispatch(beginApiCall());
+    return userApi
+      .logoutUser()
+      .then(response => {
+        dispatch(isAuthenticated(response.result));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}

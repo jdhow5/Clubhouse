@@ -106,7 +106,7 @@ const ProfilePage = ({ authenticateUser, history }) => {
         </Form.Group>
 
 
-        <Button disabled={formIsValid()} type="submit" onClick={() => setEditProfile(false)}>
+        <Button hidden={!editProfile} disabled={formIsValid()} type="submit" onClick={() => setEditProfile(false)}>
           Save
         </Button>
         <Button onClick={() => setEditProfile(true)} hidden={editProfile}>
