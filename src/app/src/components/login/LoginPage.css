@@ -1,0 +1,14 @@
+form {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+}
+
+form .form-group {
+    min-width: 270px 
+}
+
+.login {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}

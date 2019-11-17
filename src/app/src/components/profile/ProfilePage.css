@@ -1,0 +1,11 @@
+form {
+  display: table;
+}
+
+.form-group {
+  display: table-row;
+}
+
+.form-control, label {
+  display: table-cell;
+}
