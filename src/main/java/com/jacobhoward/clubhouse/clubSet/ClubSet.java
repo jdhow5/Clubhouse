@@ -3,7 +3,9 @@ package com.jacobhoward.clubhouse.clubSet;
 import com.jacobhoward.clubhouse.club.Club;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.UUID;
 
 public class ClubSet {
@@ -14,6 +16,7 @@ public class ClubSet {
     private BigDecimal price;
     private char hand;
     private Collection<Club> clubSet;
+    private ArrayList<Date> availability;
 
     public ClubSet(UUID id,
                    UUID userId,
@@ -21,7 +24,8 @@ public class ClubSet {
                    String description,
                    BigDecimal price,
                    char hand,
-                   Collection<Club> clubSet) {
+                   Collection<Club> clubSet,
+                   ArrayList<Date> availability) {
         this.id = id;
         this.userId = userId;
         this.rating = rating;
@@ -29,6 +33,7 @@ public class ClubSet {
         this.price = price;
         this.hand = hand;
         this.clubSet = clubSet;
+        this.availability = availability;
     }
 
     public UUID getId() {
