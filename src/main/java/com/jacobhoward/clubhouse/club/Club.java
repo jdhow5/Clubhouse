@@ -6,9 +6,9 @@ public class Club {
     private String type;
     private String shaft;
     private String flex;
-    private int loft;
+    private double loft;
 
-    public Club(String make, String model, String type, String shaft, String flex, int loft) {
+    public Club(String make, String model, String type, String shaft, String flex, double loft) {
         this.make = make;
         this.model = model;
         this.type = type;
@@ -37,7 +37,7 @@ public class Club {
         return flex;
     }
 
-    public int getLoft() {
+    public double getLoft() {
         return loft;
     }
 }
