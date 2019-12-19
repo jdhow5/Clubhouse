@@ -22,6 +22,11 @@ public class ClubSetController {
     }
 
     @GetMapping(path = "")
+    public String getClubSetById() {
+        return clubSetService.getClubSetById();
+    }
+
+    @GetMapping(path = "")
     public String getClubSetByUserId() {
         return clubSetService.getClubSetByUserId();
     }

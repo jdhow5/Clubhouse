@@ -19,6 +19,10 @@ public class ClubSetService {
         return clubSetDao.getAllClubSets();
     }
 
+    public String getClubSetById() {
+        return clubSetDao.getClubSetById();
+    }
+
     public String getClubSetByUserId() {
         return clubSetDao.getClubSetByUserId();
     }
