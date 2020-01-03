@@ -15,15 +15,15 @@ public class ClubSetService {
         this.clubSetDao = clubSetDao;
     }
 
-    public String getAllClubSets() {
+    public List<ClubSet> getAllClubSets() {
         return clubSetDao.getAllClubSets();
     }
 
-    public String getClubSetById() {
+    public ClubSet getClubSetById(UUID clubSetId) {
         return clubSetDao.getClubSetById();
     }
 
-    public String getClubSetByUserId() {
+    public ClubSet getClubSetByUserId() {
         return clubSetDao.getClubSetByUserId();
     }
 
@@ -43,7 +43,15 @@ public class ClubSetService {
         return clubSetDao.updateClubSet(id, clubSet);
     }
 
-    public String deleteClubSet(UUID id) {
+    public void deleteClubSet(UUID id) {
         return clubSetDao.deleteClubSet(id);
+    }
+
+    public void deleteClubsByClubSetId(UUID id) {
+        return clubSetDao.deleteClubsByClubSetId(id);
+    }
+
+    public void deleteClubById(UUID id) {
+        return clubSetDao.deleteClubById(id);
     }
 }

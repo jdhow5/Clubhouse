@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/clubSets")
+@RequestMapping("api/clubs")
 public class ClubSetController {
 
     private final ClubSetService clubSetService;
@@ -55,5 +55,15 @@ public class ClubSetController {
     @DeleteMapping(path = "{id}")
     public String deleteClubSet(@PathVariable("id") UUID id) {
         return clubSetService.deleteClubSet(id);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteClubsByClubSetId(@PathVariable("id") UUID id) {
+        return clubSetService.deleteClubsByClubSetId(id);
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteClubById(@PathVariable("id") UUID id) {
+        return clubSetService.deleteClubById(id);
     }
 }

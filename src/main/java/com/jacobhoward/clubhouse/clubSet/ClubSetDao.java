@@ -21,61 +21,39 @@ public class ClubSetDao {
     public List<ClubSet> getAllClubSets() {
         String query = 
             "SELECT " +
-                "id" +
-                "rating" +
-                "description" +
-                "price" +
-                "hand" +
-                "unit" +
-                "street_num" +
-                "street_name" +
-                "city" +
-                "province" +
-                "postal_code" +
-                "country" +
-                "zip_code" +
-                "state" +
-            "FROM club_set";
-        return jdbc.query(query, mapClubSetsFromDb());
-    }
-
-    public ClubSet getClubSetById(String clubSetId) {
-        List<String> clubSetIds = new ArrayList<String>(Arrays.asList(clubSetId));
-       return getClubSetsByIds(clubSetIds)[0];
-    }
-
-    public List<ClubSet> getClubSetsByIds(List<String> clubSetIds) {
-        String query = 
-            "SELECT " +
-                "club_set.id" +
-                "club_set.rating" +
-                "club_set.description" +
-                "club_set.price" +
-                "club_set.hand" +
-                "club_set.unit" +
-                "club_set.street_num" +
-                "club_set.street_name" +
-                "club_set.city" +
-                "club_set.province" +
-                "club_set.postal_code" +
-                "club_set.country" +
-                "club_set.zip_code" +
-                "club_set.state" +
-                "club.make " +
-                "club.model " +
-                "club.type " +
-                "club.shaft " +
-                "club.flex " +
+                "club_set.id, " +
+                "club_set.rating, " +
+                "club_set.description, " +
+                "club_set.price, " +
+                "club_set.hand, " +
+                "club_set.unit, " +
+                "club_set.street_num, " +
+                "club_set.street_name, " +
+                "club_set.city, " +
+                "club_set.province, " +
+                "club_set.postal_code, " +
+                "club_set.country, " +
+                "club_set.zip_code, " +
+                "club_set.state, " +
+                "club_set.image1, " +
+                "club_set.image2, " +
+                "club_set.image3, " +
+                "club_set.image4, " +
+                "club_set.image5, " +
+                "club.make, " +
+                "club.model, " +
+                "club.type, " +
+                "club.shaft, " +
+                "club.flex, " +
                 "club.loft " +
-            "FROM club_set" +
-            "WHERE id =" + clubSetId +
+            "FROM club_set " +
             " INNER JOIN club " +
             "ON club.club_set_id = club_set.id";
 
-        Map<String, List<ClubSet>> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
-        Map<String, List<Date>> availabilityWithIds = getClubSetsAvailability(clubSetId);
+        Map<UUID, List<ClubSet>> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
+        Map<UUID, List<Date>> availabilityWithIds = getClubSetsAvailability(clubSetIds);
 
-        for (String id : clubSetsWithIds.keySet()) {
+        for (String UUID : clubSetsWithIds.keySet()) {
             List<Date> availability = availabilityWithIds.get(id);
             ClubSet clubSet = clubSetsWithIds.get(id);
             clubSet.setAvailability(availability);
@@ -84,7 +62,57 @@ public class ClubSetDao {
         return clubSetsWithIds.values();
     }
 
-    public String getClubSetByUserId() {
+    public ClubSet getClubSetById(UUID clubSetId) {
+        List<UUID> clubSetIds = new ArrayList<String>(Arrays.asList(clubSetId));
+        return getClubSetsByIds(clubSetIds)[0];
+    }
+
+    public List<ClubSet> getClubSetsByIds(List<UUID> clubSetIds) {
+        String query = 
+            "SELECT " +
+                "club_set.id, " +
+                "club_set.rating, " +
+                "club_set.description, " +
+                "club_set.price, " +
+                "club_set.hand, " +
+                "club_set.unit, " +
+                "club_set.street_num, " +
+                "club_set.street_name, " +
+                "club_set.city, " +
+                "club_set.province, " +
+                "club_set.postal_code, " +
+                "club_set.country, " +
+                "club_set.zip_code, " +
+                "club_set.state, " +
+                "club_set.image1, " +
+                "club_set.image2, " +
+                "club_set.image3, " +
+                "club_set.image4, " +
+                "club_set.image5, " +
+                "club.make, " +
+                "club.model, " +
+                "club.type, " +
+                "club.shaft, " +
+                "club.flex, " +
+                "club.loft, " +
+            "FROM club_set " +
+            "WHERE id IN" + clubSetIds +
+            " INNER JOIN club " +
+            "ON club.club_set_id = club_set.id";
+
+        Map<UUID, List<ClubSet>> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
+        Map<UUID, List<Date>> availabilityWithIds = getClubSetsAvailability(clubSetsWithIds.keySet());
+
+        for (String UUID : clubSetsWithIds.keySet()) {
+            List<Date> availability = availabilityWithIds.get(id);
+            ClubSet clubSet = clubSetsWithIds.get(id);
+            clubSet.setAvailability(availability);
+        }
+
+        return clubSetsWithIds.values();
+    }
+
+    public String getClubSetByUserId(UUID userId) {
     }
 
     public String getClubSetsByLocation(String address) {
@@ -93,32 +121,96 @@ public class ClubSetDao {
     public String getClubSetsBySearchTerm(String searchTerm) {
     }
 
-    public  Map<String, List<Date>> getClubSetsAvailability(List<String> clubSetIds) {
+    public  Map<UUID, List<Date>> getClubSetsAvailability(List<String> clubSetIds) {
         String query = 
             "SELECT " +
-                "id" +
-                "date"
-            "FROM availability" +
+                "id, " +
+                "date "
+            "FROM availability " +
             "WHERE id IN" + clubSetIds;
         return jdbc.query(query, mapAvailabilityFromDb());
     }
 
-    public String addClubSet(ClubSet clubSet) {
+    public int addClubSet(UUID clubSetId, ClubSet clubSet) {
+        String query = 
+            "INSERT INTO club_set (" +
+            " id, " +
+            " rating, " +
+            " description, " +
+            " price, " +
+            " hand, " +
+            " unit, " +
+            " street_num, " +
+            " street_name, " +
+            " city, " +
+            " province, " +
+            " postal_code, " +
+            " country, " +
+            " zip_code, " +
+            " state, " +
+            " image1, " +
+            " image2, " +
+            " image3, " +
+            " image4, " +
+            " image5) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        return jdbc.update(
+            query,
+            clubSetId,
+            clubSet.getRating(),
+            clubSet.getDescription(),
+            clubSet.getPrice(),
+            clubSet.getHand(),
+            clubSet.getUnit(),
+            clubSet.getStreetNum(),
+            clubSet.getStreetName(),
+            clubSet.getCity(),
+            clubSet.getProvince(),
+            clubSet.getPostalCode(),
+            clubSet.getCountry(),
+            clubSet.getZipCode(),
+            clubSet.getState(),
+            clubSet.getImage1(),
+            clubSet.getImage2(),
+            clubSet.getImage3(),
+            clubSet.getImage4(),
+            clubSet.getImage5(),
+        );
     }
 
-    public String updateClubSet(UUID id, ClubSet clubSet) {
+    public int updateClubSet(UUID id, ClubSet clubSet) {
     }
 
-    public String deleteClubSet(UUID id) {
+    public int deleteClubSet(UUID id) {
+        deleteClubsByClubSetId(id);
+        String query = 
+            "DELETE FROM club_set " +
+            "WHERE id = ?";
+        return jdbc.update(query, id);
     }
 
-    private ResultSetExtractor<Map<String, ClubSet>> mapClubSetsFromDb() {
+    public int deleteClubsByClubSetId(UUID id) {
+        String query = 
+            "DELETE FROM club " +
+            "WHERE club_set_id = ?";
+        return jdbc.update(query, id);
+    }
+
+    public int deleteClubById(UUID id) {
+        String query = 
+            "DELETE FROM club " +
+            "WHERE id = ?";
+        return jdbc.update(query, id);
+    }
+
+    private ResultSetExtractor<Map<UUID, ClubSet>> mapClubSetsFromDb() {
         return (resultSet, i) -> {
-            Map<String, ClubSet> clubSetMap = new HashMap<>();
-            Map<String, List<Club>> clubsMap = new HashMap<>();
+            Map<UUID, ClubSet> clubSetMap = new HashMap<>();
+            Map<UUID, List<Club>> clubsMap = new HashMap<>();
 
             while(resultSet.next()) {
-                String id = resultSet.getString("id");
+                String id = getId(resultSet);
 
                 ClubSet clubSet = clubSetMap.get(id);
                 if (clubSet == null) {
@@ -137,7 +229,7 @@ public class ClubSetDao {
                 }
             }
 
-            for (String clubSetId : clubSetMap.keySet()) {
+            for (UUID clubSetId : clubSetMap.keySet()) {
                 Collection<Club> clubs = clubsMap.get(clubSetId);
                 ClubSet clubSet = clubSetMap.get(clubSetId);
                 clubSet.setClubs(clubs);
@@ -148,10 +240,10 @@ public class ClubSetDao {
 
     private ResultSetExtractor<ClubSet> mapAvailabilityFromDb() {
         return (resultSet, i) -> {
-            Map<String, List<Date>> availabilityMap = new HashMap<>();
+            Map<UUID, List<Date>> availabilityMap = new HashMap<>();
 
             while(resultSet.next()) {
-                String id = resultSet.getString("id");
+                UUID id = getId(resultSet);
 
                 //Add Date to availabilityMap
                 List<Date> availability = availabilityMap.get(id);
@@ -164,18 +256,18 @@ public class ClubSetDao {
                     availability.add(resultSet.getDate(date));
                 }
             }
+
+            return availabilityMap;
         }
 
     }
 
     private UUID getId(resultSet) {
-        String idString = resultSet.getString("id");
-        return UUID.fromString(idString);
+        return UUID.fromString(resultSet.getString("id"));
     }
 
     private UUID getUserId(resultSet) {
-        String userIdString = resultSet.getString("user_id");
-        return UUID.fromString(userIdString);
+        return UUID.fromString(resultSet.getString("user_id"));
     }
 
     private Address getAddress(resultSet) {
@@ -239,9 +331,5 @@ public class ClubSetDao {
             flex,
             loft
         );
-    }
-
-    private ArrayList<Date> getAvailability(resultSet) {
-
     }
 }
