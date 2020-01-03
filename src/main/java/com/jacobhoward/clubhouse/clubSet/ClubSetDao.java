@@ -18,7 +18,7 @@ public class ClubSetDao {
         this.jdbc = jdbc;
     }
 
-    public String getAllClubSets() {
+    public List<ClubSet> getAllClubSets() {
         String query = 
             "SELECT " +
                 "id" +
@@ -39,7 +39,12 @@ public class ClubSetDao {
         return jdbc.query(query, mapClubSetsFromDb());
     }
 
-    public String getClubSetById(clubSetId) {
+    public ClubSet getClubSetById(String clubSetId) {
+        List<String> clubSetIds = new ArrayList<String>(Arrays.asList(clubSetId));
+       return getClubSetsByIds(clubSetIds)[0];
+    }
+
+    public List<ClubSet> getClubSetsByIds(List<String> clubSetIds) {
         String query = 
             "SELECT " +
                 "club_set.id" +
@@ -66,7 +71,17 @@ public class ClubSetDao {
             "WHERE id =" + clubSetId +
             " INNER JOIN club " +
             "ON club.club_set_id = club_set.id";
-        return jdbc.query(query, mapClubSetFromDb());
+
+        Map<String, List<ClubSet>> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
+        Map<String, List<Date>> availabilityWithIds = getClubSetsAvailability(clubSetId);
+
+        for (String id : clubSetsWithIds.keySet()) {
+            List<Date> availability = availabilityWithIds.get(id);
+            ClubSet clubSet = clubSetsWithIds.get(id);
+            clubSet.setAvailability(availability);
+        }
+
+        return clubSetsWithIds.values();
     }
 
     public String getClubSetByUserId() {
@@ -78,6 +93,16 @@ public class ClubSetDao {
     public String getClubSetsBySearchTerm(String searchTerm) {
     }
 
+    public  Map<String, List<Date>> getClubSetsAvailability(List<String> clubSetIds) {
+        String query = 
+            "SELECT " +
+                "id" +
+                "date"
+            "FROM availability" +
+            "WHERE id IN" + clubSetIds;
+        return jdbc.query(query, mapAvailabilityFromDb());
+    }
+
     public String addClubSet(ClubSet clubSet) {
     }
 
@@ -87,33 +112,10 @@ public class ClubSetDao {
     public String deleteClubSet(UUID id) {
     }
 
-    private RowMapper<ClubSet> mapClubSetsFromDb() {
-        return (resultSet, i) -> {
-            UUID id = getId(resultSet);
-            Address address = getAddress(resultSet);
-            double rating = resultSet.getDouble("rating");
-            String description = resultSet.getString("description");
-            BigDecimal price = resultSet.getBigDecimal("price");
-            String hand = resultSet.getString("hand");
-            Collection<Club> clubs = getClubs(resultSet);
-            ArrayList<Date> availability = getAvailability(resultSet);
-
-            return new ClubSet(
-                id,
-                address,
-                rating,
-                description,
-                price,
-                hand
-            );
-        }
-    }
-
-    private ResultSetExtractor<ClubSet> mapClubSetFromDb() {
+    private ResultSetExtractor<Map<String, ClubSet>> mapClubSetsFromDb() {
         return (resultSet, i) -> {
             Map<String, ClubSet> clubSetMap = new HashMap<>();
             Map<String, List<Club>> clubsMap = new HashMap<>();
-            Map<String, List<String>> availabilityMap = new HashMap<>();
 
             while(resultSet.next()) {
                 String id = resultSet.getString("id");
@@ -133,30 +135,37 @@ public class ClubSetDao {
                 else {
                     clubs.add(getClub(resultSet));
                 }
-
-                //Add Date to availabilityMap
-                // List<String> availability = availabilityMap.get(id);
-                // if (availability == null) {
-                //     List<String> newDate = new ArrayList<>();
-                //     newDate.add();
-                //     availabilityMap.put(id, newDate);
-                // }
-                // else {
-                //     availability.add();
-                // }
             }
 
             for (String clubSetId : clubSetMap.keySet()) {
                 Collection<Club> clubs = clubsMap.get(clubSetId);
-                ArrayList<String> availability = availabilityMap.get(clubSetId);
                 ClubSet clubSet = clubSetMap.get(clubSetId);
-                clubSet.setClubs = clubs;
-                clubSet.setAvailability = availability;
+                clubSet.setClubs(clubs);
             }
-
-
-            return clubSetMap.values();
+            return clubSetMap;
         }
+    }
+
+    private ResultSetExtractor<ClubSet> mapAvailabilityFromDb() {
+        return (resultSet, i) -> {
+            Map<String, List<Date>> availabilityMap = new HashMap<>();
+
+            while(resultSet.next()) {
+                String id = resultSet.getString("id");
+
+                //Add Date to availabilityMap
+                List<Date> availability = availabilityMap.get(id);
+                if (availability == null) {
+                    List<Date> newDate = new ArrayList<>();
+                    newDate.add(resultSet.getDate(date));
+                    availabilityMap.put(id, newDate);
+                }
+                else {
+                    availability.add(resultSet.getDate(date));
+                }
+            }
+        }
+
     }
 
     private UUID getId(resultSet) {

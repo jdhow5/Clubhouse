@@ -72,6 +72,10 @@ public class ClubSet {
         return clubs;
     }
 
+    public ArrayList<Date> getAvailability() {
+        return availability;
+    }
+
     enum Hand {
         LEFT, RIGHT
     }
