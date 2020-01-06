@@ -4,33 +4,32 @@ import com.jacobhoward.clubhouse.club.Club;
 import com.jacobhoward.clubhouse.utils.Address;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
 public class ClubSet {
     private UUID id;
-    private UUID userId;
     private Address address;
     private double rating;
     private String description;
     private BigDecimal price;
-    private Hand hand;
+    private String hand;
     private Collection<Club> clubs;
-    private ArrayList<Date> availability;
+    private List<Date> availability;
+    private List<String> images;
 
     public ClubSet(UUID id,
-                   UUID userId,
                    Address address,
                    double rating,
                    String description,
                    BigDecimal price,
-                   Hand hand,
+                   String hand,
                    Collection<Club> clubs,
-                   ArrayList<Date> availability) {
+                   List<Date> availability,
+                   List<String> images) {
         this.id = id;
-        this.userId = userId;
         this.address = address;
         this.rating = rating;
         this.description = description;
@@ -38,14 +37,11 @@ public class ClubSet {
         this.hand = hand;
         this.clubs = clubs;
         this.availability = availability;
+        this.images = images;
     }
 
     public UUID getId() {
         return id;
-    }
-
-    public UUID getUserId() {
-        return userId;
     }
 
     public Address getAddress() {
@@ -64,7 +60,7 @@ public class ClubSet {
         return price;
     }
 
-    public Hand getHand() {
+    public String getHand() {
         return hand;
     }
 
@@ -72,11 +68,19 @@ public class ClubSet {
         return clubs;
     }
 
-    public ArrayList<Date> getAvailability() {
+    public List<Date> getAvailability() {
         return availability;
     }
 
-    enum Hand {
-        LEFT, RIGHT
+    public String getImage(int idx) {
+        return images.get(idx);
+    }
+
+    public void setClubs(Collection<Club> newClubs) {
+        clubs = newClubs;
+    }
+
+    public void setAvailability(List<Date> newAvailability) {
+        availability = newAvailability;
     }
 }
