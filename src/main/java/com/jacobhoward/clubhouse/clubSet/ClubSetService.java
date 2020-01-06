@@ -41,8 +41,8 @@ public class ClubSetService {
         return clubSetDao.addClubSet(id, clubSet);
     }
 
-    public void updateClubSet(UUID id, ClubSet clubSet) {
-        clubSetDao.updateClubSet(id, clubSet);
+    public int updateClubSet(UUID id, String description) {
+        return clubSetDao.updateClubSet(id, description);
     }
 
     public void deleteClubSet(UUID id) {

@@ -54,6 +54,7 @@ public class ClubSetDao {
                 "club_set.image3, " +
                 "club_set.image4, " +
                 "club_set.image5, " +
+                "club.id, " +
                 "club.make, " +
                 "club.model, " +
                 "club.type, " +
@@ -103,6 +104,7 @@ public class ClubSetDao {
                 "club_set.image3, " +
                 "club_set.image4, " +
                 "club_set.image5, " +
+                "club.id, " +
                 "club.make, " +
                 "club.model, " +
                 "club.type, " +
@@ -193,7 +195,15 @@ public class ClubSetDao {
         );
     }
 
-    public void updateClubSet(UUID id, ClubSet clubSet) {
+    public int updateClubSet(UUID id, String description) {
+        //need to loop through a map and contruct update statement
+        //Map key is col name and value is new value
+
+        String query = 
+            "UPDATE club_set " +
+            "SET description = ? " +
+            "WHERE id = ?";
+        return jdbc.update(query, description, id);
     }
 
     public int deleteClubSet(UUID id) {
@@ -280,7 +290,7 @@ public class ClubSetDao {
             return UUID.fromString(resultSet.getString("id"));
         }
         catch(SQLException e) {
-            throw new ApiRequestException("Oh no.");
+            throw new ApiRequestException(e.getMessage());
         }
     }
 
@@ -308,7 +318,7 @@ public class ClubSetDao {
             );
         }
         catch(SQLException e) {
-            throw new ApiRequestException("Oh no.");
+            throw new ApiRequestException(e.getMessage());
         }
     }
 
@@ -322,7 +332,13 @@ public class ClubSetDao {
             String hand = resultSet.getString("hand");
             Collection<Club> clubs =  new ArrayList<>();
             List<Date> availability = new ArrayList<>();
-            List<String> images = new ArrayList<>();
+            List<String> images = new ArrayList<String>(
+                List.of(resultSet.getString("image1"),
+                resultSet.getString("image2"),
+                resultSet.getString("image3"),
+                resultSet.getString("image4"),
+                resultSet.getString("image5"))
+            );
 
             return new ClubSet(
                 id,
@@ -337,12 +353,13 @@ public class ClubSetDao {
             );
         }
         catch(SQLException e) {
-            throw new ApiRequestException("Oh no.");
+            throw new ApiRequestException(e.getMessage());
         }
     }
 
     private Club getClub(ResultSet resultSet) {
         try {
+            UUID id = getId(resultSet);
             String make = resultSet.getString("make");
             String model = resultSet.getString("model");
             String type = resultSet.getString("type");
@@ -350,6 +367,7 @@ public class ClubSetDao {
             String flex = resultSet.getString("flex");
             double loft = resultSet.getDouble("loft");
             return new Club(
+                id,
                 make,
                 model,
                 type,
@@ -360,7 +378,7 @@ public class ClubSetDao {
         }
 
         catch(SQLException e) {
-            throw new ApiRequestException("Oh no.");
+            throw new ApiRequestException(e.getMessage());
         }
     }
 }
