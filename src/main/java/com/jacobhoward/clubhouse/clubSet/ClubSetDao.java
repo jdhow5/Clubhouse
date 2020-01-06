@@ -1,12 +1,26 @@
 package com.jacobhoward.clubhouse.clubSet;
 
+import com.jacobhoward.clubhouse.club.Club;
+import com.jacobhoward.clubhouse.utils.Address;
+import com.jacobhoward.clubhouse.exception.ApiRequestException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Date;
+import java.math.BigDecimal;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Repository
 public class ClubSetDao {
@@ -18,7 +32,7 @@ public class ClubSetDao {
         this.jdbc = jdbc;
     }
 
-    public List<ClubSet> getAllClubSets() {
+    public Collection<ClubSet> getAllClubSets() {
         String query = 
             "SELECT " +
                 "club_set.id, " +
@@ -50,10 +64,10 @@ public class ClubSetDao {
             " INNER JOIN club " +
             "ON club.club_set_id = club_set.id";
 
-        Map<UUID, List<ClubSet>> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
-        Map<UUID, List<Date>> availabilityWithIds = getClubSetsAvailability(clubSetIds);
+        Map<UUID, ClubSet> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
+        Map<UUID, List<Date>> availabilityWithIds = getClubSetsAvailability(clubSetsWithIds.keySet());
 
-        for (String UUID : clubSetsWithIds.keySet()) {
+        for (UUID id : clubSetsWithIds.keySet()) {
             List<Date> availability = availabilityWithIds.get(id);
             ClubSet clubSet = clubSetsWithIds.get(id);
             clubSet.setAvailability(availability);
@@ -63,8 +77,8 @@ public class ClubSetDao {
     }
 
     public ClubSet getClubSetById(UUID clubSetId) {
-        List<UUID> clubSetIds = new ArrayList<String>(Arrays.asList(clubSetId));
-        return getClubSetsByIds(clubSetIds)[0];
+        List<UUID> clubSetIds = new ArrayList<UUID>(Arrays.asList(clubSetId));
+        return getClubSetsByIds(clubSetIds).get(0);
     }
 
     public List<ClubSet> getClubSetsByIds(List<UUID> clubSetIds) {
@@ -100,32 +114,32 @@ public class ClubSetDao {
             " INNER JOIN club " +
             "ON club.club_set_id = club_set.id";
 
-        Map<UUID, List<ClubSet>> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
+        Map<UUID, ClubSet> clubSetsWithIds = jdbc.query(query, mapClubSetsFromDb());
         Map<UUID, List<Date>> availabilityWithIds = getClubSetsAvailability(clubSetsWithIds.keySet());
 
-        for (String UUID : clubSetsWithIds.keySet()) {
+        for (UUID id : clubSetsWithIds.keySet()) {
             List<Date> availability = availabilityWithIds.get(id);
             ClubSet clubSet = clubSetsWithIds.get(id);
             clubSet.setAvailability(availability);
         }
 
-        return clubSetsWithIds.values();
+        return new ArrayList<>(clubSetsWithIds.values());
     }
 
-    public String getClubSetByUserId(UUID userId) {
+    public void getClubSetByUserId(UUID userId) {
     }
 
-    public String getClubSetsByLocation(String address) {
+    public void getClubSetsByLocation(String address) {
     }
 
-    public String getClubSetsBySearchTerm(String searchTerm) {
+    public void getClubSetsBySearchTerm(String searchTerm) {
     }
 
-    public  Map<UUID, List<Date>> getClubSetsAvailability(List<String> clubSetIds) {
+    public  Map<UUID, List<Date>> getClubSetsAvailability(Set<UUID> clubSetIds) {
         String query = 
             "SELECT " +
                 "id, " +
-                "date "
+                "date " +
             "FROM availability " +
             "WHERE id IN" + clubSetIds;
         return jdbc.query(query, mapAvailabilityFromDb());
@@ -162,24 +176,24 @@ public class ClubSetDao {
             clubSet.getDescription(),
             clubSet.getPrice(),
             clubSet.getHand(),
-            clubSet.getUnit(),
-            clubSet.getStreetNum(),
-            clubSet.getStreetName(),
-            clubSet.getCity(),
-            clubSet.getProvince(),
-            clubSet.getPostalCode(),
-            clubSet.getCountry(),
-            clubSet.getZipCode(),
-            clubSet.getState(),
-            clubSet.getImage1(),
-            clubSet.getImage2(),
-            clubSet.getImage3(),
-            clubSet.getImage4(),
-            clubSet.getImage5(),
+            clubSet.getAddress().getUnit(),
+            clubSet.getAddress().getStreetNum(),
+            clubSet.getAddress().getStreetName(),
+            clubSet.getAddress().getCity(),
+            clubSet.getAddress().getProvince(),
+            clubSet.getAddress().getPostalCode(),
+            clubSet.getAddress().getCountry(),
+            clubSet.getAddress().getZipCode(),
+            clubSet.getAddress().getState(),
+            clubSet.getImage(0),
+            clubSet.getImage(1),
+            clubSet.getImage(2),
+            clubSet.getImage(3),
+            clubSet.getImage(4)
         );
     }
 
-    public int updateClubSet(UUID id, ClubSet clubSet) {
+    public void updateClubSet(UUID id, ClubSet clubSet) {
     }
 
     public int deleteClubSet(UUID id) {
@@ -205,16 +219,16 @@ public class ClubSetDao {
     }
 
     private ResultSetExtractor<Map<UUID, ClubSet>> mapClubSetsFromDb() {
-        return (resultSet, i) -> {
+        return (resultSet) -> {
             Map<UUID, ClubSet> clubSetMap = new HashMap<>();
             Map<UUID, List<Club>> clubsMap = new HashMap<>();
 
             while(resultSet.next()) {
-                String id = getId(resultSet);
+                UUID id = getId(resultSet);
 
                 ClubSet clubSet = clubSetMap.get(id);
                 if (clubSet == null) {
-                    clubSetMap.put(id, getBasicClubSet());
+                    clubSetMap.put(id, getBasicClubSet(resultSet));
                 }
                 
                 //Add club to clubMap
@@ -235,11 +249,11 @@ public class ClubSetDao {
                 clubSet.setClubs(clubs);
             }
             return clubSetMap;
-        }
+        };
     }
 
-    private ResultSetExtractor<ClubSet> mapAvailabilityFromDb() {
-        return (resultSet, i) -> {
+    private ResultSetExtractor<Map<UUID, List<Date>>> mapAvailabilityFromDb() {
+        return (resultSet) -> {
             Map<UUID, List<Date>> availabilityMap = new HashMap<>();
 
             while(resultSet.next()) {
@@ -249,87 +263,104 @@ public class ClubSetDao {
                 List<Date> availability = availabilityMap.get(id);
                 if (availability == null) {
                     List<Date> newDate = new ArrayList<>();
-                    newDate.add(resultSet.getDate(date));
+                    newDate.add(resultSet.getDate("date"));
                     availabilityMap.put(id, newDate);
                 }
                 else {
-                    availability.add(resultSet.getDate(date));
+                    availability.add(resultSet.getDate("date"));
                 }
             }
 
             return availabilityMap;
+        };
+    }
+
+    private UUID getId(ResultSet resultSet) {
+        try {
+            return UUID.fromString(resultSet.getString("id"));
+        }
+        catch(SQLException e) {
+            throw new ApiRequestException("Oh no.");
+        }
+    }
+
+    private Address getAddress(ResultSet resultSet) {
+        try {
+            String unit = resultSet.getString("unit");
+            String streetNum = resultSet.getString("street_num");
+            String streetName = resultSet.getString("street_name");
+            String city = resultSet.getString("city");
+            String province = resultSet.getString("province");
+            String postalCode = resultSet.getString("postal_code");
+            String country = resultSet.getString("country");
+            String zipCode = resultSet.getString("zip_code");
+            String state = resultSet.getString("state");
+            return new Address(
+                unit,
+                streetNum,
+                streetName,
+                city,
+                province,
+                postalCode,
+                country,
+                zipCode,
+                state
+            );
+        }
+        catch(SQLException e) {
+            throw new ApiRequestException("Oh no.");
+        }
+    }
+
+    private ClubSet getBasicClubSet(ResultSet resultSet) {
+        try {
+            UUID id = getId(resultSet);
+            Address address = getAddress(resultSet);
+            double rating = resultSet.getDouble("rating");
+            String description = resultSet.getString("description");
+            BigDecimal price = resultSet.getBigDecimal("price");
+            String hand = resultSet.getString("hand");
+            Collection<Club> clubs =  new ArrayList<>();
+            List<Date> availability = new ArrayList<>();
+            List<String> images = new ArrayList<>();
+
+            return new ClubSet(
+                id,
+                address,
+                rating,
+                description,
+                price,
+                hand,
+                clubs,
+                availability,
+                images
+            );
+        }
+        catch(SQLException e) {
+            throw new ApiRequestException("Oh no.");
+        }
+    }
+
+    private Club getClub(ResultSet resultSet) {
+        try {
+            String make = resultSet.getString("make");
+            String model = resultSet.getString("model");
+            String type = resultSet.getString("type");
+            String shaft = resultSet.getString("shaft");
+            String flex = resultSet.getString("flex");
+            double loft = resultSet.getDouble("loft");
+            return new Club(
+                make,
+                model,
+                type,
+                shaft,
+                flex,
+                loft
+            );
         }
 
-    }
-
-    private UUID getId(resultSet) {
-        return UUID.fromString(resultSet.getString("id"));
-    }
-
-    private UUID getUserId(resultSet) {
-        return UUID.fromString(resultSet.getString("user_id"));
-    }
-
-    private Address getAddress(resultSet) {
-        String unit = resultSet.getString("unit");
-        String streetNum = resultSet.getString("street_num");
-        String streetName = resultSet.getString("street_name");
-        String city = resultSet.getString("city");
-        String province = resultSet.getString("province");
-        String postalCode = resultSet.getString("postal_code");
-        String country = resultSet.getString("country");
-        String zipCode = resultSet.getString("zip_code");
-        String state = resultSet.getString("state");
-
-        return new Address(
-            unit,
-            streetNum,
-            streetName,
-            city,
-            province,
-            postalCode,
-            country,
-            zipCode,
-            state
-        );
-    }
-
-    private ClubSet getBasicClubSet(resultSet) {
-        UUID id = getId(resultSet);
-        Address address = getAddress(resultSet);
-        double rating = resultSet.getDouble("rating");
-        String description = resultSet.getString("description");
-        BigDecimal price = resultSet.getBigDecimal("price");
-        String hand = resultSet.getString("hand");
-        Collection<Club> clubs =  new ArrayList<>();
-        ArrayList<Date> availability = new ArrayList<>();
-
-        return new ClubSet(
-            id,
-            address,
-            rating,
-            description,
-            price,
-            hand,
-            clubs,
-            availability
-        );
-    }
-
-    private Club getClub(resultSet) {
-        String make = resultSet.getString("make");
-        String model = resultSet.getString("model");
-        String type = resultSet.getString("type");
-        String shaft = resultSet.getString("shaft");
-        String flex = resultSet.getString("flex");
-        double loft = resultSet.getDouble("loft");
-        return new Club(
-            make,
-            model,
-            type,
-            shaft,
-            flex,
-            loft
-        );
+        catch(SQLException e) {
+            throw new ApiRequestException("Oh no.");
+        }
     }
 }

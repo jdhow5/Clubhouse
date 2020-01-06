@@ -1,4 +1,4 @@
-package com.jacobhoward.clubhouse.address;
+package com.jacobhoward.clubhouse.utils;
 
 public class Address {
     private String streetName;
@@ -29,5 +29,41 @@ public class Address {
         this.country = country;
         this.zipCode = zipCode;
         this.state = state;
+    }
+
+    public String getStreetNum() {
+        return streetNum;
+    }
+    
+    public String getStreetName() {
+        return streetName;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getState() {
+        return state;
     }
 }

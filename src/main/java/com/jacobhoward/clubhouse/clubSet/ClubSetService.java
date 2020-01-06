@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
+import java.util.Collection;
 
 @Service
 public class ClubSetService {
@@ -15,43 +16,44 @@ public class ClubSetService {
         this.clubSetDao = clubSetDao;
     }
 
-    public List<ClubSet> getAllClubSets() {
+    public Collection<ClubSet> getAllClubSets() {
         return clubSetDao.getAllClubSets();
     }
 
     public ClubSet getClubSetById(UUID clubSetId) {
-        return clubSetDao.getClubSetById();
+        return clubSetDao.getClubSetById(clubSetId);
     }
 
-    public ClubSet getClubSetByUserId() {
-        return clubSetDao.getClubSetByUserId();
+    public void getClubSetsByLocation(String address) {
+        clubSetDao.getClubSetsByLocation(address);
     }
 
-    public String getClubSetsByLocation(String address) {
-        return clubSetDao.getClubSetsByLocation(address);
+    public void getClubSetsBySearch(String searchTerm) {
+        clubSetDao.getClubSetsBySearchTerm(searchTerm);
     }
 
-    public String getClubSetsBySearch(String searchTerm) {
-        return clubSetDao.getClubSetsBySearchTerm(searchTerm);
+    public int addClubSet(ClubSet clubSet) {
+        UUID id = UUID.randomUUID();
+        return clubSetDao.addClubSet(id, clubSet);
     }
 
-    public String addClubSet(ClubSet clubSet) {
-        return clubSetDao.addClubSet(clubSet);
+    public int addClubSet(UUID id, ClubSet clubSet) {
+        return clubSetDao.addClubSet(id, clubSet);
     }
 
-    public String updateClubSet(UUID id, ClubSet clubSet) {
-        return clubSetDao.updateClubSet(id, clubSet);
+    public void updateClubSet(UUID id, ClubSet clubSet) {
+        clubSetDao.updateClubSet(id, clubSet);
     }
 
     public void deleteClubSet(UUID id) {
-        return clubSetDao.deleteClubSet(id);
+        clubSetDao.deleteClubSet(id);
     }
 
     public void deleteClubsByClubSetId(UUID id) {
-        return clubSetDao.deleteClubsByClubSetId(id);
+        clubSetDao.deleteClubsByClubSetId(id);
     }
 
     public void deleteClubById(UUID id) {
-        return clubSetDao.deleteClubById(id);
+        clubSetDao.deleteClubById(id);
     }
 }
