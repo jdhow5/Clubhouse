@@ -1,6 +1,9 @@
 package com.jacobhoward.clubhouse.club;
 
+import java.util.UUID;
+
 public class Club {
+    private UUID id;
     private String make;
     private String model;
     private String type;
@@ -8,13 +11,18 @@ public class Club {
     private String flex;
     private double loft;
 
-    public Club(String make, String model, String type, String shaft, String flex, double loft) {
+    public Club(UUID id, String make, String model, String type, String shaft, String flex, double loft) {
+        this.id = id;
         this.make = make;
         this.model = model;
         this.type = type;
         this.shaft = shaft;
         this.flex = flex;
         this.loft = loft;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getMake() {

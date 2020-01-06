@@ -22,7 +22,7 @@ public class ClubSetController {
         return clubSetService.getAllClubSets();
     }
 
-    @GetMapping(path = "")
+    @GetMapping(path = "{id}")
     public ClubSet getClubSetById(UUID id) {
         return clubSetService.getClubSetById(id);
     }
@@ -44,8 +44,8 @@ public class ClubSetController {
 
     @PutMapping(path = "{id}")
     public void updateClubSet(@PathVariable("id") UUID id,
-                                @RequestBody ClubSet clubSet) {
-        clubSetService.updateClubSet(id, clubSet);
+                                @RequestBody String description) {
+        clubSetService.updateClubSet(id, description);
     }
 
     @DeleteMapping(path = "{id}")
