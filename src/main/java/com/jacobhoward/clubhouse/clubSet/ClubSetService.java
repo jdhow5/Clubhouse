@@ -45,7 +45,7 @@ public class ClubSetService {
         }
         
         int x = clubSetDao.addClubSet(clubSet);
-        int[] arr = clubSetDao.addClubs(clubSet.getClubs());
+        int[] arr = addClubs(clubSet.getClubs());
         return x;
     }
 
