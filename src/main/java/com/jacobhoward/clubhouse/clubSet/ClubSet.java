@@ -5,7 +5,6 @@ import com.jacobhoward.clubhouse.utils.Address;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Collection;
 import java.util.Date;
 import java.util.UUID;
 
@@ -16,7 +15,7 @@ public class ClubSet {
     private String description;
     private BigDecimal price;
     private String hand;
-    private Collection<Club> clubs;
+    private List<Club> clubs;
     private List<Date> availability;
     private List<String> images;
 
@@ -26,7 +25,7 @@ public class ClubSet {
                    String description,
                    BigDecimal price,
                    String hand,
-                   Collection<Club> clubs,
+                   List<Club> clubs,
                    List<Date> availability,
                    List<String> images) {
         this.id = id;
@@ -64,7 +63,7 @@ public class ClubSet {
         return hand;
     }
 
-    public Collection<Club> getClubs() {
+    public List<Club> getClubs() {
         return clubs;
     }
 
@@ -76,7 +75,11 @@ public class ClubSet {
         return images.get(idx);
     }
 
-    public void setClubs(Collection<Club> newClubs) {
+    public void setId(UUID newId) {
+        id = newId;
+    }
+
+    public void setClubs(List<Club> newClubs) {
         clubs = newClubs;
     }
 

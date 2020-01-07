@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class Club {
     private UUID id;
+    private UUID clubSetId;
     private String make;
     private String model;
     private String type;
@@ -11,8 +12,9 @@ public class Club {
     private String flex;
     private double loft;
 
-    public Club(UUID id, String make, String model, String type, String shaft, String flex, double loft) {
+    public Club(UUID id, UUID clubSetId, String make, String model, String type, String shaft, String flex, double loft) {
         this.id = id;
+        this.clubSetId = clubSetId;
         this.make = make;
         this.model = model;
         this.type = type;
@@ -23,6 +25,10 @@ public class Club {
 
     public UUID getId() {
         return id;
+    }
+
+    public UUID getClubSetId() {
+        return clubSetId;
     }
 
     public String getMake() {
@@ -47,5 +53,13 @@ public class Club {
 
     public double getLoft() {
         return loft;
+    }
+
+    public void setId(UUID newId) {
+        id = newId;
+    }
+
+    public void setClubSetId(UUID newId) {
+        clubSetId = newId;
     }
 }

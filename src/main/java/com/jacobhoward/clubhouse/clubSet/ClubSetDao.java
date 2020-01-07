@@ -5,6 +5,7 @@ import com.jacobhoward.clubhouse.utils.Address;
 import com.jacobhoward.clubhouse.exception.ApiRequestException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Date;
 import java.math.BigDecimal;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -147,7 +149,7 @@ public class ClubSetDao {
         return jdbc.query(query, mapAvailabilityFromDb());
     }
 
-    public int addClubSet(UUID clubSetId, ClubSet clubSet) {
+    public int addClubSet(ClubSet clubSet) {
         String query = 
             "INSERT INTO club_set (" +
             " id, " +
@@ -173,7 +175,7 @@ public class ClubSetDao {
         
         return jdbc.update(
             query,
-            clubSetId,
+            clubSet.getId().toString(),
             clubSet.getRating(),
             clubSet.getDescription(),
             clubSet.getPrice(),
@@ -193,6 +195,41 @@ public class ClubSetDao {
             clubSet.getImage(3),
             clubSet.getImage(4)
         );
+    }
+
+    public int[] addClubs(List<Club> clubs) {
+        return jdbc.batchUpdate(
+            "INSERT INTO club (" +
+            " id, " +
+            " club_set_id, " +
+            " make, " +
+            " model, " +
+            " type, " +
+            " shaft, " +
+            " flex, " +
+            " loft) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+
+            new BatchPreparedStatementSetter(){
+            
+                @Override
+                public void setValues(PreparedStatement ps, int i) throws SQLException {
+                    ps.setString(1, clubs.get(i).getId().toString());
+                    ps.setString(2, clubs.get(i).getClubSetId().toString());
+                    ps.setString(3, clubs.get(i).getMake());
+                    ps.setString(4, clubs.get(i).getModel());
+                    ps.setString(5, clubs.get(i).getType());
+                    ps.setString(6, clubs.get(i).getShaft());
+                    ps.setString(7, clubs.get(i).getFlex());
+                    ps.setDouble(8, clubs.get(i).getLoft());
+                }
+            
+                @Override
+                public int getBatchSize() {
+                    return clubs.size();
+                }
+            }
+        );           
     }
 
     public int updateClubSet(UUID id, String description) {
@@ -254,7 +291,7 @@ public class ClubSetDao {
             }
 
             for (UUID clubSetId : clubSetMap.keySet()) {
-                Collection<Club> clubs = clubsMap.get(clubSetId);
+                List<Club> clubs = new ArrayList<>(clubsMap.get(clubSetId));
                 ClubSet clubSet = clubSetMap.get(clubSetId);
                 clubSet.setClubs(clubs);
             }
@@ -330,7 +367,7 @@ public class ClubSetDao {
             String description = resultSet.getString("description");
             BigDecimal price = resultSet.getBigDecimal("price");
             String hand = resultSet.getString("hand");
-            Collection<Club> clubs =  new ArrayList<>();
+            List<Club> clubs =  new ArrayList<>();
             List<Date> availability = new ArrayList<>();
             List<String> images = new ArrayList<String>(
                 List.of(resultSet.getString("image1"),
@@ -360,6 +397,7 @@ public class ClubSetDao {
     private Club getClub(ResultSet resultSet) {
         try {
             UUID id = getId(resultSet);
+            UUID clubSetId = UUID.fromString(resultSet.getString("club_set_id"));
             String make = resultSet.getString("make");
             String model = resultSet.getString("model");
             String type = resultSet.getString("type");
@@ -368,6 +406,7 @@ public class ClubSetDao {
             double loft = resultSet.getDouble("loft");
             return new Club(
                 id,
+                clubSetId,
                 make,
                 model,
                 type,
