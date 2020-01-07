@@ -1,10 +1,13 @@
 package com.jacobhoward.clubhouse.clubSet;
 
+import com.jacobhoward.clubhouse.club.Club;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class ClubSetService {
@@ -34,11 +37,20 @@ public class ClubSetService {
 
     public int addClubSet(ClubSet clubSet) {
         UUID id = UUID.randomUUID();
-        return clubSetDao.addClubSet(id, clubSet);
+        clubSet.setId(id);
+
+        for (Club club : clubSet.getClubs()) {
+            club.setId(UUID.randomUUID());
+            club.setClubSetId(id);
+        }
+        
+        int x = clubSetDao.addClubSet(clubSet);
+        int[] arr = clubSetDao.addClubs(clubSet.getClubs());
+        return x;
     }
 
-    public int addClubSet(UUID id, ClubSet clubSet) {
-        return clubSetDao.addClubSet(id, clubSet);
+    public int[] addClubs(List<Club> clubs) {
+        return clubSetDao.addClubs(clubs);
     }
 
     public int updateClubSet(UUID id, String description) {
