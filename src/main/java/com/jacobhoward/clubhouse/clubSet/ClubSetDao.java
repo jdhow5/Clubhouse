@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -139,6 +141,23 @@ public class ClubSetDao {
     public void getClubSetsBySearchTerm(String searchTerm) {
     }
 
+    public List<Club> getClubById(UUID clubId) {
+        String query = 
+            "SELECT " +
+                "id " +
+                "club_set_id " +
+                "make " +
+                "model " +
+                "type " +
+                "shaft " +
+                "flex " +
+                "loft " +
+            "FROM club " +
+            "WHERE id = " + clubId;
+        
+        return jdbc.query(query, (resultSet, i) -> getClub(resultSet));
+    }
+
     public  Map<UUID, List<Date>> getClubSetsAvailability(Set<UUID> clubSetIds) {
         String query = 
             "SELECT " +
@@ -151,26 +170,26 @@ public class ClubSetDao {
 
     public int addClubSet(ClubSet clubSet) {
         String query = 
-            "INSERT INTO club_set (" +
-            " id, " +
-            " rating, " +
-            " description, " +
-            " price, " +
-            " hand, " +
-            " unit, " +
-            " street_num, " +
-            " street_name, " +
-            " city, " +
-            " province, " +
-            " postal_code, " +
-            " country, " +
-            " zip_code, " +
-            " state, " +
-            " image1, " +
-            " image2, " +
-            " image3, " +
-            " image4, " +
-            " image5) " +
+            "INSERT INTO club_set ( " +
+                "id, " +
+                "rating, " +
+                "description, " +
+                "price, " +
+                "hand, " +
+                "unit, " +
+                "street_num, " +
+                "street_name, " +
+                "city, " +
+                "province, " +
+                "postal_code, " +
+                "country, " +
+                "zip_code, " +
+                "state, " +
+                "image1, " +
+                "image2, " +
+                "image3, " +
+                "image4, " +
+                "image5) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         return jdbc.update(
@@ -200,14 +219,14 @@ public class ClubSetDao {
     public int[] addClubs(List<Club> clubs) {
         return jdbc.batchUpdate(
             "INSERT INTO club (" +
-            " id, " +
-            " club_set_id, " +
-            " make, " +
-            " model, " +
-            " type, " +
-            " shaft, " +
-            " flex, " +
-            " loft) " +
+                "id, " +
+                "club_set_id, " +
+                "make, " +
+                "model, " +
+                "type, " +
+                "shaft, " +
+                "flex, " +
+                "loft) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
 
             new BatchPreparedStatementSetter(){

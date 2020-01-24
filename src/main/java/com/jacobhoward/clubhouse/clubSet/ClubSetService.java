@@ -35,6 +35,10 @@ public class ClubSetService {
         clubSetDao.getClubSetsBySearchTerm(searchTerm);
     }
 
+    public Club getClubById(UUID clubId) {
+        return clubSetDao.getClubById(clubId).get(0);
+    }
+
     public int addClubSet(ClubSet clubSet) {
         UUID id = UUID.randomUUID();
         clubSet.setId(id);

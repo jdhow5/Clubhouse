@@ -1,5 +1,7 @@
 package com.jacobhoward.clubhouse.clubSet;
 
+import com.jacobhoward.clubhouse.club.Club;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +37,11 @@ public class ClubSetController {
     @GetMapping(path = "")
     public void getClubSetsBySearch(String searchTerm) {
         clubSetService.getClubSetsBySearch(searchTerm);
+    }
+
+    @GetMapping(path = "{id}")
+    public Club getClubById(UUID id) {
+        return clubSetService.getClubById(id);
     }
 
     @PostMapping
