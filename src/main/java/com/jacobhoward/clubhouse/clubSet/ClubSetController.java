@@ -5,6 +5,7 @@ import com.jacobhoward.clubhouse.club.Club;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.UUID;
 import java.util.Collection;
 
@@ -30,8 +31,8 @@ public class ClubSetController {
     }
 
     @GetMapping(path = "")
-    public void getClubSetsByLocation(String address) {
-        clubSetService.getClubSetsByLocation(address);
+    public Collection<ClubSet> getClubSetsByLocation(String address) {
+        return clubSetService.getClubSetsByLocation(address);
     }
 
     @GetMapping(path = "")
@@ -51,8 +52,8 @@ public class ClubSetController {
 
     @PutMapping(path = "{id}")
     public void updateClubSet(@PathVariable("id") UUID id,
-                                @RequestBody String description) {
-        clubSetService.updateClubSet(id, description);
+                                @RequestBody Map<String, String> fields) {
+        clubSetService.updateClubSet(id, fields);
     }
 
     @DeleteMapping(path = "{id}")

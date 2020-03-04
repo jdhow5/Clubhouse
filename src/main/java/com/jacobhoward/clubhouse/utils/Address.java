@@ -10,6 +10,7 @@ public class Address {
     private String country;
     private String zipCode;
     private String state;
+    private Coordinate coordinates;
 
     public Address(String streetName,
                    String streetNum,
@@ -19,7 +20,8 @@ public class Address {
                    String unit,
                    String country,
                    String zipCode,
-                   String state) {
+                   String state,
+                   Coordinate coordinates) {
         this.streetName = streetName;
         this.streetNum = streetNum;
         this.city = city;               
@@ -29,6 +31,7 @@ public class Address {
         this.country = country;
         this.zipCode = zipCode;
         this.state = state;
+        this.coordinates = coordinates;
     }
 
     public String getStreetNum() {
@@ -66,4 +69,6 @@ public class Address {
     public String getState() {
         return state;
     }
+
+    public Coordinate getCoordinate() { return coordinates; }
 }

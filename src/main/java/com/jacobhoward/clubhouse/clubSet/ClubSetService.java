@@ -1,13 +1,12 @@
 package com.jacobhoward.clubhouse.clubSet;
 
 import com.jacobhoward.clubhouse.club.Club;
+import com.jacobhoward.clubhouse.utils.Coordinate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ClubSetService {
@@ -27,8 +26,9 @@ public class ClubSetService {
         return clubSetDao.getClubSetById(clubSetId);
     }
 
-    public void getClubSetsByLocation(String address) {
-        clubSetDao.getClubSetsByLocation(address);
+    public Collection<ClubSet> getClubSetsByLocation(String address) {
+        Coordinate coordinates = Coordinate.convertToCoordinate(address);
+        return clubSetDao.getClubSetsByLocation(coordinates);
     }
 
     public void getClubSetsBySearch(String searchTerm) {
@@ -57,8 +57,8 @@ public class ClubSetService {
         return clubSetDao.addClubs(clubs);
     }
 
-    public int updateClubSet(UUID id, String description) {
-        return clubSetDao.updateClubSet(id, description);
+    public int updateClubSet(UUID id, Map<String, String> fields) {
+        return clubSetDao.updateClubSet(id, fields);
     }
 
     public void deleteClubSet(UUID id) {
